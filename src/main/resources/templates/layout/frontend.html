@@ -1,0 +1,87 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title, links)">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="icon" th:href="@{/images/logo.png}" />
+	<title>Curso Spring Boot</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+		}
+
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+		rel="stylesheet" />
+	<link th:href="@{/css/blog.css}" rel="stylesheet" />
+	<link th:href="@{/fontawesome-free-5.15.4-web/css/all.css}" rel="stylesheet" />
+	<link th:href="@{/css/jquery.alerts.min.css}" rel="stylesheet" />
+	
+	<th:block th:replace="${links}" />
+</head>
+
+<body>
+
+	<div class="container">
+		<header th:fragment="cabecero" class="blog-header py-3">
+			<div class="row flex-nowrap justify-content-between align-items-center">
+				<div class="col-4 pt-1">
+					<a class="link-secondary" href="#">Subscribe</a>
+				</div>
+				<div class="col-4 text-center">
+					<a class="blog-header-logo text-dark" href="#">
+						<img th:src="@{/images/logo.png}" />
+					</a>
+				</div>
+				<div class="col-4 d-flex justify-content-end align-items-center">
+					<a class="btn btn-sm btn-outline-secondary"><span id="spanreloj"></span> </a> 
+					<a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+				</div>
+			</div>
+		</header>
+
+		<div th:fragment="menu" class="nav-scroller py-1 mb-2">
+			<nav class="nav d-flex justify-content-between">
+				<a class="p-2 link-secondary" th:href="@{/templates/estaticos}">Estáticos</a>
+				<a class="p-2 link-secondary" th:href="@{/templates/estaticos2}">Estáticos 2</a>
+				<a class="p-2 link-secondary" th:href="@{/templates/ajax}">AJAX</a>
+				<a class="p-2 link-secondary" th:href="@{/formularios}">Formularios</a>
+				<a class="p-2 link-secondary" th:href="@{/ejemplo-service}">Ejemplo service</a>
+				<a class="p-2 link-secondary" th:href="@{/email}">E-Mail</a>
+				<a class="p-2 link-secondary" th:href="@{/qr}">QR</a>
+				<a class="p-2 link-secondary" th:href="@{/cliente-rest}">Cliente Rest</a>
+				<a class="p-2 link-secondary" th:href="@{/jpa-repository}">JPA Repository</a>
+				<a class="p-2 link-secondary" th:href="@{/jpa-mongodb}">MongoDB</a>
+				<a class="p-2 link-secondary" th:href="@{/reportes}">Reportes</a>
+			</nav>
+		</div>
+	</div>
+
+
+
+	<footer th:fragment="footer" class="blog-footer">
+		<p>Desarrollado por <a href="https://www.tamila.cl/">Tamila</a> </p>
+	</footer>
+
+	<div th:fragment="scripts">
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery.alerts.min.js}"></script>
+		<script th:src="@{/js/funciones.js}"></script>
+	</div>
+</body>
+
+</html>

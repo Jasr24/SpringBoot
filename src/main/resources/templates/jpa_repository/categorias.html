@@ -1,0 +1,53 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="container">
+		<header th:replace="layout/frontend :: cabecero"></header>
+		<div th:replace="layout/frontend :: menu"></div>
+	</div>
+
+	<main class="container">
+		<h1>Categorías</h1>
+		 <div th:if="${mensaje!=null}" th:class="'alert alert-'+${clase}+'  alert-dismissible fade show'">
+		 <span th:text="${mensaje}"> </span>
+		  <button th:if="${mensaje!=null}" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		 </div>
+		<p>
+			<a th:href="@{/jpa-repository/categorias/add}" class="btn btn-success">Crear</a>
+		</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nombre</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dato:${datos}">
+					<td th:text="${dato.id}"></td>
+					<td th:text="${dato.nombre}"></td>
+					<td>
+						<a th:href="@{/jpa-repository/categorias/editar/}+${dato.id}"><i class="fas fa-edit"></i></a>
+						<!-- <a th:href="@{/jpa-repository/categorias/delete/}+${dato.id}"><i class="fas fa-trash"></i></a>-->
+					 
+	<a href="javascript:void(0);" th:onclick="'eliminar(\'/jpa-repository/categorias/delete/'+ ${dato.id} +'\')'" >
+	<i class="fas fa-trash"></i>
+	</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+
+
+
+	<footer th:replace="layout/frontend :: footer"></footer>
+
+	<div th:replace="layout/frontend :: scripts"></div>
+</body>
+</html>

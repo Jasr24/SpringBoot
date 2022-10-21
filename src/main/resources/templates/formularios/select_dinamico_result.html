@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+	</head>
+	<body>
+		
+		<div class="container">
+			<header th:replace="layout/frontend :: cabecero"></header>
+			<div th:replace="layout/frontend :: menu"></div>
+		</div>
+		
+		 <main class="container">
+		 <h1>Formulario select dinámico respuesta</h1>
+		  <ul>
+			 	<li th:text="'username: '+${usuario.username}"></li>
+			 	<li th:text="'E-Mail: '+${usuario.correo}"></li>
+			 	<li th:text="'Contraseña: '+${usuario.password}"></li>
+			 	<li th:text="'País '+${usuario.paisId.id}"></li>
+			 </ul>
+		 
+		 </main>
+	
+	
+	
+	<footer th:replace="layout/frontend :: footer"></footer>
+	
+	 <div th:replace="layout/frontend :: scripts"></div>
+	</body>
+</html>

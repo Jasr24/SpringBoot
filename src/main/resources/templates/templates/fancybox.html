@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/fancybox/jquery.fancybox.css}" />
+	
+	
+	</head>
+	<body>
+		
+		<div class="container">
+			<header th:replace="layout/frontend :: cabecero"></header>
+			<div th:replace="layout/frontend :: menu"></div>
+		</div>
+		
+		 <main class="container">
+		 <h1>Fancybox</h1>
+			
+			<a th:href="@{/images/yoda.png}" class="fancybox">
+				<img th:src="@{/images/yoda.png}" width="100" height="100" />
+			</a>
+			
+		
+		 </main>
+	
+	
+	
+	<footer th:replace="layout/frontend :: footer"></footer>
+	
+	 <div th:replace="layout/frontend :: scripts"></div>
+	 <script type="text/javascript" th:src="@{/fancybox/jquery.fancybox.js}"></script>
+	 
+	 <script  type="text/javascript">
+          $(document).ready(function() {
+            $(".fancybox").fancybox({
+              openEffect  : 'none',
+              closeEffect : 'none',
+            });
+            });
+
+
+    </script>
+	  
+	</body>
+</html>

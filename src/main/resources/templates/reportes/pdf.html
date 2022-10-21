@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+	</head>
+<body>
+	
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="card-title" th:text="${titulo}"></h1>
+				<h2 class="card-title" th:text="${ruta}"></h2>
+			</div>
+			<div class="card-body">
+				<img th:src="@{/images/yoda.png}" />
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

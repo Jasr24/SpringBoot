@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+	</head>
+	<body>
+		
+		<div class="container">
+			<header th:replace="layout/frontend :: cabecero"></header>
+			<div th:replace="layout/frontend :: menu"></div>
+		</div>
+		
+		 <main class="container">
+		 <h1>Ejemplo QR</h1>
+		 
+		 <div style="width:40%;display: inline-block">
+		 	<h3>Código qr generado</h3>
+		 	<p>URL : <span th:text="${url}"></span></p>
+		 	<img th:src="${'data:image/png;base64,' + qrcode}" alt="" height="250" width="250" />
+		 	
+		 </div>
+		 
+		 
+		 </main>
+	
+	
+	
+	<footer th:replace="layout/frontend :: footer"></footer>
+	
+	 <div th:replace="layout/frontend :: scripts"></div>
+	</body>
+</html>

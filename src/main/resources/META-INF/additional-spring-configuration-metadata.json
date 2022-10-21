@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "jose.valores.ruta_upload",
+    "type": "java.lang.String",
+    "description": "A description for 'jose.valores.ruta_upload'"
+  },
+  {
+    "name": "jose.valores.nombre",
+    "type": "java.lang.String",
+    "description": "A description for 'jose.valores.nombre'"
+  },
+  {
+    "name": "jose.valores.base_url_upload",
+    "type": "java.lang.String",
+    "description": "A description for 'jose.valores.base_url_upload'"
+  }
+]}

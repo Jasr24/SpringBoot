@@ -1,0 +1,83 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/fancybox/jquery.fancybox.css}" />
+</head>
+<body>
+
+	<div class="container">
+		<header th:replace="layout/frontend :: cabecero"></header>
+		<div th:replace="layout/frontend :: menu"></div>
+	</div>
+
+	<main class="container">
+		<h1>Productos paginación</h1>
+		<div th:if="${mensaje!=null}"
+			th:class="'alert alert-'+${clase}+'  alert-dismissible fade show'">
+			<span th:text="${mensaje}"> </span>
+			<button th:if="${mensaje!=null}" type="button" class="btn-close"
+				data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		<p>
+			<a th:href="@{/jpa-repository/productos/add}" class="btn btn-success">Crear</a>
+		</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Categoría</th>
+					<th>Nombre</th>
+					<th>Precio</th>
+					<th>Foto</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dato:${datos}">
+					<td th:text="${dato.id}"></td>
+					<td>
+						<a th:href="@{/jpa-repository/productos/categorias/}+${dato.categoriaId.id}" th:title="${dato.categoriaId.nombre}" th:text="${dato.categoriaId.nombre}"></a>
+					</td>
+					<td th:text="${dato.nombre}"></td>
+					<td
+						th:text="'$'+${#numbers.formatDecimal(dato.precio, 0, 'POINT', 0, 'POINT')}"></td>
+					<td style="text-align: center;">
+						<a th:href="${base_url_upload}+'producto2/'+${dato.foto}" class="fancybox"> 
+						<img
+								th:src="${base_url_upload}+'producto2/'+${dato.foto}" width="100"
+								height="100" />
+						</a>
+					</td>
+					<td><a
+						th:href="@{/jpa-repository/productos/editar/}+${dato.id}"><i
+							class="fas fa-edit"></i></a> <a href="javascript:void(0);"
+						th:onclick="'eliminar(\'/jpa-repository/productos/delete/'+ ${dato.id} +'\')'">
+							<i class="fas fa-trash"></i>
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- paginación -->
+			<nav th:insert="layout/paginacion :: paginacion"></nav>
+		<!-- //paginación -->
+	</main>
+
+
+
+	<footer th:replace="layout/frontend :: footer"></footer>
+
+	<div th:replace="layout/frontend :: scripts"></div>
+	<script type="text/javascript" th:src="@{/fancybox/jquery.fancybox.js}"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fancybox").fancybox({
+				openEffect : 'none',
+				closeEffect : 'none',
+			});
+		});
+	</script>
+</body>
+</html>

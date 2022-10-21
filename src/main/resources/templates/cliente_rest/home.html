@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="container">
+		<header th:replace="layout/frontend :: cabecero"></header>
+		<div th:replace="layout/frontend :: menu"></div>
+	</div>
+
+	<main class="container">
+		<h1>Ejemplo Cliente rest</h1>
+
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Categoría</th>
+					<th>Nombre</th>
+					<th>Precio</th>
+					<th>Descripción</th>
+					<th>Foto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dato:${datos}">
+					<td th:text="${dato.id}"></td>
+					<td th:text="${dato.categoriaId.nombre}"></td>
+					<td th:text="${dato.nombre}"></td>
+					<td th:text="'$'+${#numbers.formatDecimal(dato.precio, 0, 'POINT', 0, 'POINT')}"></td>
+					<td th:text="${#strings.substring(dato.descripcion,0,10)}+'...'"></td>
+					<td>
+						<img th:src="${base_url_upload}+'producto2/'+${dato.foto}" width="100" height="100" /> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</main>
+
+
+
+	<footer th:replace="layout/frontend :: footer"></footer>
+
+	<div th:replace="layout/frontend :: scripts"></div>
+</body>
+</html>

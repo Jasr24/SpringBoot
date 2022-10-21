@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/frontend :: head(~{::title}, ~{::link})">
+	<link th:href="@{/css/estilos.css}" rel="stylesheet" />
+	</head>
+	<body>
+		
+		<div class="container">
+			<header th:replace="layout/frontend :: cabecero"></header>
+			<div th:replace="layout/frontend :: menu"></div>
+		</div>
+		
+		 <main class="container">
+		 <h1>JPA Repository MongoDB</h1> 
+		 	<ul>
+		 		<li>
+		 			<a th:href="@{/jpa-mongodb/categorias}">Categorías</a>
+		 		</li>
+		 		<li>
+		 			<a th:href="@{/jpa-mongodb/productos}">Productos</a>
+		 		</li>
+		 		 
+		 	</ul>
+		 </main>
+	
+	
+	
+	<footer th:replace="layout/frontend :: footer"></footer>
+	
+	 <div th:replace="layout/frontend :: scripts"></div>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+enviar correos electronicos con smtp
+
+se nesesita una cuenta de sntp para poder enviar email... pagina para esto esta "mailtrap.io" ya que este es gratuito
+
+tamvien esta "https://dreamhost.com/ " pero creo que hay que pagar.
+
+
+2. se debe instalar en el pom
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+3. creamos un servicio 
+4. El controlador Utilice la pagina mailtrap.io que es gratuita.. las demas son pagas;
+
+////////////////////////////
+GENERACION DE CODIGO QR - Google ZXing
+
+1. Inyectar en el pom las dependencias
+<!--Agregar codigo QR-->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
+2.
+

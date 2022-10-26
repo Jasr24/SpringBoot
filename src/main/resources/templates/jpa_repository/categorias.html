@@ -35,6 +35,7 @@
 						<a th:href="@{/jpa-repository/categorias/editar/}+${dato.id}"><i class="fas fa-edit"></i></a>
 						<!-- <a th:href="@{/jpa-repository/categorias/delete/}+${dato.id}"><i class="fas fa-trash"></i></a>-->
 					 
+<!--Este metodo eliminar esta en el archivo funciones de JavaScrip-->						
 	<a href="javascript:void(0);" th:onclick="'eliminar(\'/jpa-repository/categorias/delete/'+ ${dato.id} +'\')'" >
 	<i class="fas fa-trash"></i>
 	</a>

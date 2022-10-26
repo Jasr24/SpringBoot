@@ -44,9 +44,10 @@
 					<td
 						th:text="'$'+${#numbers.formatDecimal(dato.precio, 0, 'POINT', 0, 'POINT')}"></td>
 					<td style="text-align: center;">
-						<a th:href="${base_url_upload}+'producto2/'+${dato.foto}" class="fancybox"> 
+						<!--fincyBix para ver la imagen grande en el navegador sin salirse de la vista.-->
+						<a th:href="${base_url_upload}+${dato.foto}" class="fancybox"> 
 						<img
-								th:src="${base_url_upload}+'producto2/'+${dato.foto}" width="100"
+								th:src="${base_url_upload}+${dato.foto}" width="100"
 								height="100" />
 						</a>
 					</td>

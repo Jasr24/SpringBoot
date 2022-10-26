@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import cl.tamilla.modelos.CategoriaModel;
@@ -17,7 +18,11 @@ public class CategoriaService {
     @Autowired
     ICategoriaRepositorio repositorio;
 
-    public List<CategoriaModel> listar(){
+    public List<CategoriaModel> listar(){ //Listar con metodo Sort para ordenar
+        return this.repositorio.findAll(Sort.by("id").descending()); //o al contrario
+    }
+
+    public List<CategoriaModel> listar2(){
         return this.repositorio.findAll();
     }
 

@@ -1,6 +1,7 @@
 package cl.tamilla.controllers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,12 +24,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cl.tamilla.modelos.CategoriaModel;
 import cl.tamilla.modelos.ProductoModel;
 import cl.tamilla.servicice.CategoriaService;
 import cl.tamilla.servicice.ProductoService;
+import cl.tamilla.utilidades.Constantes;
 import cl.tamilla.utilidades.Utilidades;
 
 @Controller
@@ -286,5 +293,39 @@ public class JpaController {
         }
         return "redirect:/jpa-repository/productos"; 
     }
-     
+
+    /////////////////////////// BUSQUEDAS PERSONALIDAS. POR CATEGORIA, WHERE IN, FILTROS, PAGINACION /////////////////////////// 
+    @GetMapping("/productos/categorias/{id}")
+    public String productos_categoria(@PathVariable("id") Integer id, Model model){
+
+        CategoriaModel categoria = this.categoriaService.buscarPorId(id);
+        if(categoria == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Página no encontrada"); //Permite pasr un paramtetro para forzar la carga de un estado Http
+        }
+        model.addAttribute("datos", productoService.listarPorCategorias(categoria));
+        model.addAttribute("categoria", categoria);
+        return "jpa_repository/productos_categorias";
+    }
+
+    //where In
+    @GetMapping("/productos-wherein")
+    public String productos_wherein(Model model) {
+
+        List<CategoriaModel> lista = new ArrayList<>();
+        lista.add(this.categoriaService.buscarPorId(1)); //Aqui filtramos 
+        lista.add(this.categoriaService.buscarPorId(4)); //Aqui filtramos 
+        model.addAttribute("datos", this.productoService.listar_Where_In(lista));
+        return "jpa_repository/productos_wherein";
+    }
+    
+    //Paginacion
+    @GetMapping("/productos-paginacion")
+    public String productos_paginacion(@RequestParam(value = "page", required = false) Integer page, 
+                                                        Model model){
+
+        Pageable pageable = PageRequest.of((page == null) ? 0 : page, Constantes.CANTIDAD_POR_PAGINA, Sort.by("id").descending()); //el tercer parametro es opcional,, es para ordenar
+        model.addAttribute("datos", this.productoService.listar_paginacion(pageable));
+        model.addAttribute("paginacion", "jpa-repository/productos-paginacion");
+        return "jpa_repository/productos_paginacion";
+    }
 }

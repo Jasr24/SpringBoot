@@ -15,4 +15,6 @@ public class Constantes {
     public static final String SMTP_MAIL = "3fbd96805cf90d";
     public static final String SMTP_PASSWORD = "5cedc0c330b9d2";
 
+    public static final Integer CANTIDAD_POR_PAGINA = 3;
+
 }

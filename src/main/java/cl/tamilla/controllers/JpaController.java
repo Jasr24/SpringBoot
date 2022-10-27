@@ -92,7 +92,7 @@ public class JpaController {
                 });
             model.addAttribute("errores",errores);
             model.addAttribute("categoria", categoria);
-            return "formularios/categorias_add";
+            return "jpa_repository/categorias_add";
         }
         String slug = Utilidades.getSlug(categoria.getNombre());
         if(this.categoriaService.buscarPorSlug(slug) == false){
@@ -241,7 +241,7 @@ public class JpaController {
                 });
             model.addAttribute("errores",errores);
             model.addAttribute("producto", producto);
-            return "formularios/productos_add";
+            return "jpa-repository/productos_add";
         }
 
         if(!multiPart.isEmpty()){

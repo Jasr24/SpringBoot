@@ -70,7 +70,7 @@ public class Utilidades {
         return retorno;
     }
 
-    // number format
+    // number format  PAR FORMATEAR EL NUMERO DEL LADO DEL SERVIDOR.
 	public static final String numberFormat(double value) {
 		DecimalFormat df = new DecimalFormat("###,###,###");
 		return df.format(value);
